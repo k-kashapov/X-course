@@ -1,0 +1,6 @@
+*.elf
+*.log
+*.txt
+*.png
+*/Task.md
+*/Example.cpp
