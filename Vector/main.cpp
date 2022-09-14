@@ -1,43 +1,37 @@
-#include "Vector.h"
+#include "Coordinates.h"
 
 int main (int argc, const char **argv)
 {
-    Vector vec {5, 12};
-    Vector vec2{5, 12};
+    const int winWidth  = 1280;
+    const int winHeight = 720;
 
-    vec.SetCoord (3, 4);
+    SetTargetFPS (60);
 
-    vec = vec + vec + vec2;
+    InitWindow (winWidth, winHeight, "Vectors");
 
-    std::cout << vec << " of len " << vec.CalcLen() << '\n';
+    Vector zero_L {winWidth / 4,     winHeight / 2};
+    Vector zero_R {winWidth * 3 / 4, winHeight / 2};
+    Vector vec  {100, 100};
 
-    vec += vec;
+    CoordSys left  (zero_L, winWidth / 5,  winHeight / 5 * 2);
+    CoordSys right (zero_R, winWidth / 10, winHeight / 5);
 
-    std::cout << vec << " of len " << vec.CalcLen() << '\n';
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
 
-    vec -= vec;
+        ClearBackground(RAYWHITE);
 
-    std::cout << vec << " of len " << vec.CalcLen() << '\n';
+        left.DrawAxes();
+        left.DrawVector (-vec - vec.Normal() * 2);
+        left.DrawVector (vec);
 
-    vec = vec2;
+        right.DrawAxes();
 
-    std::cout << vec << " of len " << vec.CalcLen() << '\n';
+        EndDrawing();
+    }
 
-    Vector vec3{-10, -500};
-
-    vec3 = (vec2 = (vec + vec2));
-
-    std::cout << vec3 << " of len " << vec3.CalcLen() << '\n';
-
-    Vector vec_cp (vec2 * 10);
-
-    std::cout << vec_cp << " of len " << vec_cp.CalcLen() << '\n';
-
-    Vector vec0{};
-
-    std::cout << vec0 << " of len " << vec0.CalcLen() << '\n';
-
-    std::cout << "vec_cp == vec0: " << (vec_cp == vec0) << '\n';
+    CloseWindow();
 
     return 0;
 }

@@ -14,3 +14,8 @@ double Vector::CalcLen (void)
 
     return len_;
 }
+
+Vector Vector::Normal (void) const
+{
+    return Vector {-GetY(), GetX()};
+}

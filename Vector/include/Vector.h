@@ -1,5 +1,6 @@
 #include <iostream>
 #include "cmath"
+#include <raylib.h>
 
 #define VECTOR_OP(op)                                      \
     Vector operator op (const Vector& val) const           \
@@ -54,8 +55,6 @@ public:
         return;
     }
 
-    double CalcLen (void);
-
     inline double GetX (void) const
     { 
         return x_;
@@ -78,7 +77,6 @@ public:
     VECTOR_OP (+);
     VECTOR_OP (-);
     VECTOR_OP (*);
-
 #undef VECTOR_OP
 
     bool operator== (const Vector& vec) const
@@ -111,6 +109,17 @@ public:
 
         len_ /= scale;
     }
+
+    Vector operator - () const
+    {
+        return Vector (-x_, -y_);
+    }
+
+    double CalcLen (void);
+    void   Draw    (const Vector& start_pos) const;
+
+    // Returns vector, rotated on PI clockwise
+    Vector Normal  (void) const;
 };
 
 std::ostream& operator<< (std::ostream& s, Vector& vec);

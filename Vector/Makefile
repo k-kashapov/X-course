@@ -1,14 +1,14 @@
-CC = g++
+CC  = g++
 
 INCLUDE_DIR = include
 BUILD_DIR   = build
 
-SRCS = main.cpp Vector.cpp
+SRCS = main.cpp Vector.cpp Coordinates.cpp
 
-CC_FLAGS  = -Wall -Wextra -I $(INCLUDE_DIR)
+CC_FLAGS  = -Wall -Wextra -I $(INCLUDE_DIR) -lraylib
 DBG_FLAGS = -fsanitize=address -ggdb
 
-all: debug
+all: build
 
 build: $(SRCS)
 	   $(CC) $^ $(CC_FLAGS) -o $(BUILD_DIR)/vector.elf
@@ -16,7 +16,7 @@ build: $(SRCS)
 debug: $(SRCS)
 	   $(CC) $^ $(CC_FLAGS) $(DBG_FLAGS) -o $(BUILD_DIR)/vector.elf
 
-run: debug
+run: build
 	 @$(BUILD_DIR)/vector.elf
 
 clean:
