@@ -3,7 +3,7 @@ CC  = g++
 INCLUDE_DIR = include
 BUILD_DIR   = build
 
-SRCS = main.cpp Vector.cpp Coordinates.cpp
+SRCS = main.cpp Vector.cpp Coordinates.cpp Misc.cpp
 
 CC_FLAGS  = -Wall -Wextra -I $(INCLUDE_DIR) -lraylib
 DBG_FLAGS = -fsanitize=address -ggdb

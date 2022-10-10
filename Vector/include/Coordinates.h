@@ -1,3 +1,6 @@
+#ifndef COORDINATES_H
+#define COORDINATES_H
+
 #include "Vector.h"
 
 class CoordSys
@@ -52,3 +55,5 @@ public:
 	void DrawAxes   (double len_x, double len_y) const;
 	void DrawAxes   (void) const;
 };
+
+#endif // COORDINATES_H
