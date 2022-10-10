@@ -4,3 +4,5 @@
 *.png
 */Task.md
 */Example.cpp
+*.json
+*/.cache
